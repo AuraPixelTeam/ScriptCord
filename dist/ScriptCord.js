@@ -28,7 +28,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("node:fs"));
 const node_path_1 = __importDefault(require("node:path"));
-const ScriptBase_1 = require("./base/ScriptBase");
 class ScriptCord {
     client;
     scriptsPath;
@@ -44,11 +43,9 @@ class ScriptCord {
             .filter(file => file.endsWith(".js"));
         for (let script of scripts) {
             const { default: scriptModule } = await Promise.resolve(`${node_path_1.default.join(__dirname, "..", `${this.scriptsPath}/${script}`)}`).then(s => __importStar(require(s)));
-            if (scriptModule instanceof ScriptBase_1.ScriptBase) {
-                console.log(`Loaded script ${scriptModule._name_} v${scriptModule._version_} by ${scriptModule._author_}!`);
-                // @ts-ignore
-                new scriptModule(this.client);
-            }
+            console.log(`Loaded script ${scriptModule._name_} v${scriptModule._version_} by ${scriptModule._author_}!`);
+            // @ts-ignore
+            new scriptModule(this.client);
         }
     }
 }

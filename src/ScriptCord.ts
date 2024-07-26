@@ -25,11 +25,9 @@ export default class ScriptCord {
             .filter(file => file.endsWith(".js"));
         for (let script of scripts) {
             const { default: scriptModule } = await import(path.join(__dirname, "..", `${this.scriptsPath}/${script}`));
-            if (scriptModule instanceof ScriptBase) {
-                console.log(`Loaded script ${scriptModule._name_} v${scriptModule._version_} by ${scriptModule._author_}!`)
-                // @ts-ignore
-                new scriptModule(this.client)
-            }
+            console.log(`Loaded script ${scriptModule._name_} v${scriptModule._version_} by ${scriptModule._author_}!`)
+            // @ts-ignore
+            new scriptModule(this.client)
         }
     }
 }

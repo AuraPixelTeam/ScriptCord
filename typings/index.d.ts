@@ -11,3 +11,16 @@ export class ScriptCord {
 
     public register(): Promise<void>;
 }
+
+export class ScriptBase {
+
+    public readonly _name_: string | undefined;
+    public readonly _author_: string | undefined;
+    public readonly _version_: string | undefined;
+
+    protected readonly client: Client;
+
+    constructor(client: Client);
+
+    public init(): void;
+}
