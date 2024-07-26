@@ -9,7 +9,9 @@ class TestScript extends ScriptBase{
 
     init() {
         super.init();
-        console.log(111)
+        this.client.on("message", (message) => {
+            console.log(message)
+        })
     }
 }
 

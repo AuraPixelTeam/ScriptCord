@@ -9,18 +9,5 @@ export class ScriptCord {
         scriptsPath?: string,
     });
 
-    public async register(): void;
-}
-
-export class ScriptBase {
-
-    public readonly _name_: string | undefined;
-    public readonly _author_: string | undefined;
-    public readonly _version_: string | undefined;
-
-    private readonly client: Client;
-
-    constructor(client: Client);
-
-    public init(): void;
+    public register(): Promise<void>;
 }
